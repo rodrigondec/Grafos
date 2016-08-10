@@ -1,7 +1,7 @@
 import types
 from No import No
 from Aresta import Aresta
-
+from Situacao import Situacao
 
 class Grafo(object):
 
@@ -28,8 +28,7 @@ class Grafo(object):
 		if identificador1 > identificador2:
 			identificador1, identificador2 = identificador2, identificador1
 		elif identificador1 == identificador2:
-			print "IDENTIFICADORES IGUAIS"
-			return False
+			return Situacao(False, "Identificadores iguais do 2 nodulos")
 		for aresta in self.arestas:
 			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
 				return True
