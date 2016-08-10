@@ -1,6 +1,8 @@
 <h1>Grafos</h1>
+<hr>
 <p>Implementação da representação dos vários tipos de grafos em Python</p>
 <h2>Conteúdo</h2>
+<hr>
 <ul>
 	<li>Nós
 		<ul>
@@ -22,6 +24,8 @@
 	</li>
 </ul>
 <h3>Nós</h3>
+<hr>
 <h4>Classes</h4>
-<label>Nódulo simples</label>
-<p>A classe implementada para os nós simples está implementada no arquivo No.py, e ela possui apenas o atributo <b><i>identificador</i></b></p>
+<hr>
+<label><b>Nódulo simples</b></label>
+<p>A classe implementada para os nós simples está implementada no arquivo No.py, e ela possui apenas o atributo <i>identificador</i></p>
