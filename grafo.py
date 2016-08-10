@@ -218,12 +218,12 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 
 grafo = DiGrafo_Aresta_e_NoValorados()
 
-print grafo.insertNo(NoValorado(1, 10))
+grafo.insertNo(NoValorado(1, 10))
 
-print grafo.insertNo(NoValorado(2, 20))
+grafo.insertNo(NoValorado(2, 20))
 
-print grafo.insertAresta(ArestaValorada(2, 1, 15))
+grafo.insertAresta(ArestaValorada(2, 1, 15))
 
-print grafo.insertAresta(ArestaValorada(1, 2, 30))
+grafo.insertAresta(ArestaValorada(1, 2, 30))
 
 print grafo
