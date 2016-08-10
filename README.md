@@ -86,9 +86,7 @@
 			Ela é uma extensão da classe "<b>Grafo</b>" citada acima expecializada para comportar tanto arestas quanto nós valorados.
 		</p>
 	</li>
-	<li>
-		<hr>
-	</li>
+	<hr>
 	<li>
 		<label><b>Grafo direcional</b> => "<b>DiGrafo</b>"</label>
 		<p>
