@@ -95,21 +95,21 @@
 		</p>
 	</li>
 	<li>
-		<label><b>Grafo direcional com nó valorado</b> => "<b>Grafo_NoValorado</b>"</label>
+		<label><b>Grafo direcional com nó valorado</b> => "<b>DiGrafo_NoValorado</b>"</label>
 		<p>
 			A classe implementada para o grafo direcional com nó valorado está implementada no arquivo "<b>grafo.py</b>". <br>
 			Ela é uma extensão da classe "<b>DiGrafo</b>" citada acima expecializada para comportar nós valorados.
 		</p>
 	</li>
 	<li>
-		<label><b>Grafo direcional com aresta valorada</b> => "<b>Grafo_ArestaValorada</b>"</label>
+		<label><b>Grafo direcional com aresta valorada</b> => "<b>DiGrafo_ArestaValorada</b>"</label>
 		<p>
 			A classe implementada para o grafo direcional com aresta valorada está implementada no arquivo "<b>grafo.py</b>". <br>
 			Ela é uma extensão da classe "<b>DiGrafo</b>" citada acima expecializada para comportar arestas valoradas.
 		</p>
 	</li>
 	<li>
-		<label><b>Grafo direcional com aresta e nó valorados</b> => "<b>Grafo_Aresta_e_NoValorados</b>"</label>
+		<label><b>Grafo direcional com aresta e nó valorados</b> => "<b>DiGrafo_Aresta_e_NoValorados</b>"</label>
 		<p>
 			A classe implementada para o grafo direcional com aresta e nós valorados está implementada no arquivo "<b>Digrafo.py</b>". <br>
 			Ela é uma extensão da classe "<b>Grafo</b>" citada acima expecializada para comportar tanto arestas quanto nós valorados.
