@@ -34,6 +34,13 @@ class Grafo(object):
 				return True
 		return False
 
+	def insertNo(self, no):
+		if type(no) == No:
+			if self.existsNo(no.identificador):
+				return Situacao(False, "Nodulo ja existe")
+			self.nos.append(no)
+			return Situacao(True, "Nodulo inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo Nodulo")
 
 grafo = Grafo()
 
