@@ -57,7 +57,7 @@ class Grafo(object):
 			print aresta
 
 	def __str__(self):
-		string =  "("
+		string =  "( "
 		if len(self.nos) >= 1:
 			string += self.nos[0].str()
 		for no in self.nos[1:]:
@@ -67,7 +67,7 @@ class Grafo(object):
 			string += self.arestas[0].str()
 		for aresta in self.arestas[1:]:
 			string += ", " + aresta.str()
-		string += ")"
+		string += " )"
 		return string
 
 
