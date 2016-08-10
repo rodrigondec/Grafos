@@ -42,6 +42,19 @@ class Grafo(object):
 			return Situacao(True, "Nodulo inserido com sucesso")
 		return Situacao(False, "Argumento n eh do tipo Nodulo")
 
+	def insertAresta(self, aresta):
+		if type(aresta) == Aresta:
+			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+				if aresta.identificador1 > aresta.identificador2:
+					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
+				elif aresta.identificador1 == aresta.identificador2:
+					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+					return Situacao(False, "Aresta ja existe")
+				self.arestas.append(aresta)
+				return Situacao(True, "Aresta inserida com sucesso")
+			return Situacao(False, "1 ou 2 dos nodulos n existem")
+		return Situacao(False, "Argumento n eh do tipo Aresta")
 grafo = Grafo()
 
 grafo.insertNo(No(1))
