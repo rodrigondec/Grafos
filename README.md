@@ -112,7 +112,7 @@
 		<label><b>Grafo direcional com aresta e nó valorados</b> => "<b>DiGrafo_Aresta_e_NoValorados</b>"</label>
 		<p>
 			A classe implementada para o grafo direcional com aresta e nós valorados está implementada no arquivo "<b>Digrafo.py</b>". <br>
-			Ela é uma extensão da classe "<b>Grafo</b>" citada acima expecializada para comportar tanto arestas quanto nós valorados.
+			Ela é uma extensão da classe "<b>DiGrafo</b>" citada acima expecializada para comportar tanto arestas quanto nós valorados.
 		</p>
 	</li>
 </ul>
