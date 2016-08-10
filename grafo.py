@@ -10,14 +10,6 @@ class Grafo(object):
 		self.nos = []
 		self.arestas = []
 
-	def insertNo(self, no):
-		if type(no) == No:
-			self.nos.append(no)
-
-	def insertAresta(self, aresta):
-		if type(aresta) == Aresta and existsNo(aresta.identificador1) and existsNo(aresta.identificador2):
-			self.arestas.append(aresta)
-
 	def existsNo(self, identificador):
 		for no in self.nos:
 			if no.identificador == identificador:
@@ -64,8 +56,29 @@ class Grafo(object):
 		for aresta in self.arestas:
 			print aresta
 
+	def __str__(self):
+		string =  "("
+		string += self.nos[0].str()
+		for no in self.nos[1:]:
+			string += ", " + no.str()
+		string += ";\n"
+		string += self.arestas[0].str()
+		for aresta in self.arestas[1:]:
+			string += ", " + aresta.str()
+		string += ")"
+		return string
+
+
+
+
 grafo = Grafo()
 
 grafo.insertNo(No(1))
 
-print grafo.existsNo(2)
+grafo.insertNo(No(2))
+
+grafo.insertAresta(Aresta(2, 1))
+
+grafo.insertAresta(Aresta(2, 1))
+
+print grafo
