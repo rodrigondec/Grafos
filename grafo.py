@@ -171,7 +171,6 @@ class DiGrafo_NoValorado(DiGrafo):
 			self.nos.append(no)
 			return Situacao(True, "Nodulo inserido com sucesso")
 		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
-		
 	
 
 class DiGrafo_ArestaValorada(DiGrafo):
@@ -192,12 +191,39 @@ class DiGrafo_ArestaValorada(DiGrafo):
 		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
 
 
-grafo.insertNo(NoValorado(1, 15))
+class DiGrafo_Aresta_e_NoValorados(DiGrafo):
+	def __init__(self):
+		DiGrafo.__init__(self)
 
-print grafo.insertNo(NoValorado(2, 30))
+	def insertNo(self, no):
+		if type(no) == NoValorado:
+			if self.existsNo(no.identificador):
+				return Situacao(False, "Nodulo ja existe")
+			self.nos.append(no)
+			return Situacao(True, "Nodulo inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
 
-grafo.insertAresta(Aresta(2, 1))
+	def insertAresta(self, aresta):
+		if type(aresta) == ArestaValorada:
+			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+				if aresta.identificador1 == aresta.identificador2:
+					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+					return Situacao(False, "Aresta ja existe")
+				self.arestas.append(aresta)
+				return Situacao(True, "Aresta inserida com sucesso")
+			return Situacao(False, "1 ou 2 dos nodulos n existem")
+		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
 
-grafo.insertAresta(Aresta(1, 2))
+
+grafo = DiGrafo_Aresta_e_NoValorados()
+
+print grafo.insertNo(NoValorado(1, 10))
+
+print grafo.insertNo(NoValorado(2, 20))
+
+print grafo.insertAresta(ArestaValorada(2, 1, 15))
+
+print grafo.insertAresta(ArestaValorada(1, 2, 30))
 
 print grafo
