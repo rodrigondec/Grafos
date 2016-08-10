@@ -29,7 +29,7 @@
 		<label><b>Aresta simples</b></label>
 		<p>
 			A classe implementada para a aresta simples está implementada no arquivo "<b>Aresta.py</b>". <br>
-			Ela possui dois atributos <i>identificador1</i>, <i>identificador2</i> (que serão referentes aos identificadores dos dois conexos) e um método para retornar a aresta como string. <br />
+			Ela possui dois atributos <i>identificador1</i> e <i>identificador2</i> que são referentes aos identificadores dos dois nós conexos, e um método para retornar a aresta como string. <br />
 			Por exmplo se possuirmos uma aresta na qual liga o nó <i>identificador</i> = <b>1</b> com o nó <i>identificador</i> = <b>2</b>, sua string ficará será "[1, 2]".
 		</p>
 		<p></p>
@@ -51,16 +51,16 @@
 		<label><b>Grafo simples</b></label>
 		<p>
 			A classe implementada para o grafo simples está implementada no arquivo "<b>grafo.py</b>". <br>
-			Ela possui dois atributos <i>nós</i>, <i>arestas</i> que são listas para armazenas os respectivos objetos do grafo. <br>
+			Ela possui dois atributos <i>nós</i> e <i>arestas</i> que são listas para armazenar os respectivos objetos do grafo. <br>
 			Essa classe também possui os seguintes métodos:
 			<ul>
-				<li><i>existsNo(identificador)</i></li>
-				<li><i>existsAresta(identificador1, identificador2)</i></li>
-				<li><i>insertNo(no)</i></li>
-				<li><i>insertAresta(aresta)</i></li>
-				<li><i>printNos()</i></li>
-				<li><i>printArestas()</i></li>
-				<li><i>str()</i></li>
+				<li><i>existsNo(identificador)</i>: método que retorna um boolean true se o nó de <i>identificador</i> existir no grafo.</li>
+				<li><i>existsAresta(identificador1, identificador2)</i>: método que retorna um boolean true se a aresta de <i>identificador1</i> e <i>identificador2</i> existir no grafo.</li>
+				<li><i>insertNo(no)</i>: método que insere o <i>nó</i> passado como parâmetro no grafo.</li>
+				<li><i>insertAresta(aresta): método que insere a <i>aresta</i> passada como parâmetro no grafo.</i></li>
+				<li><i>printNos()</i>: método que imprime todos os nós do grafo.</li>
+				<li><i>printArestas()</i>: método que imprime todas as arestas do grafo.</li>
+				<li><i>str()</i>: método que imprime todo o grafo. seguindo o modelo "( <b>nó 1</b>, <b>nó 2</b>, <b>nó n</b>; <b>aresta 1</b>, <b>aresta 2</b>, <b>aresta n</b></li>
 			</ul>
 			Por exmplo se possuirmos uma aresta na qual liga o nó <i>identificador</i> = <b>1</b> com o nó <i>identificador</i> = <b>2</b>, sua string ficará será "[1, 2]".
 		</p>
