@@ -87,6 +87,9 @@
 		</p>
 	</li>
 	<li>
+		<hr>
+	</li>
+	<li>
 		<label><b>Grafo direcional</b> => "<b>DiGrafo</b>"</label>
 		<p>
 			A classe implementada para o grafo direcional está implementada no arquivo "<b>grafo.py</b>". <br>
