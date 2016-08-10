@@ -110,12 +110,27 @@ class DiGrafo(Grafo):
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 		
 
+class DiGrafo_NoValorado(DiGrafo):
+	"""docstring for ClassName"""
+	def __init__(self):
+		DiGrafo.__init__(self)
 
-grafo = DiGrafo()
+	def insertNo(self, no):
+		if type(no) == NoValorado:
+			if self.existsNo(no.identificador):
+				return Situacao(False, "Nodulo ja existe")
+			self.nos.append(no)
+			return Situacao(True, "Nodulo inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+		
 
-grafo.insertNo(No(1))
 
-grafo.insertNo(No(2))
+
+grafo = DiGrafo_NoValorado()
+
+grafo.insertNo(NoValorado(1, 15))
+
+print grafo.insertNo(NoValorado(2, 30))
 
 grafo.insertAresta(Aresta(2, 1))
 
