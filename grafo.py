@@ -68,10 +68,34 @@ class Grafo(object):
 		string += ")"
 		return string
 
+class DiGrafo(Grafo):
+	"""docstring for DiGrafo"""
+	def __init__(self):
+		Grafo.__init__(self)
+
+	def existsAresta(self, identificador1, identificador2):
+		if identificador1 == identificador2:
+			return Situacao(False, "Identificadores iguais do 2 nodulos")
+		for aresta in self.arestas:
+			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
+				return True
+		return False
+
+	def insertAresta(self, aresta):
+		if type(aresta) == Aresta:
+			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+				if aresta.identificador1 == aresta.identificador2:
+					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+					return Situacao(False, "Aresta ja existe")
+				self.arestas.append(aresta)
+				return Situacao(True, "Aresta inserida com sucesso")
+			return Situacao(False, "1 ou 2 dos nodulos n existem")
+		return Situacao(False, "Argumento n eh do tipo Aresta")
+		
 
 
-
-grafo = Grafo()
+grafo = DiGrafo()
 
 grafo.insertNo(No(1))
 
@@ -79,6 +103,6 @@ grafo.insertNo(No(2))
 
 grafo.insertAresta(Aresta(2, 1))
 
-grafo.insertAresta(Aresta(2, 1))
+grafo.insertAresta(Aresta(1, 2))
 
 print grafo
