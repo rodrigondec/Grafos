@@ -55,6 +55,15 @@ class Grafo(object):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos nodulos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
+
+	def printNos(self):
+		for no in self.nos:
+			print no
+
+	def printArestas(self):
+		for aresta in self.arestas:
+			print aresta
+
 grafo = Grafo()
 
 grafo.insertNo(No(1))
