@@ -5,7 +5,20 @@
 <ul>
 	<li>Nódulos
 		<ul>
-			<li></li>
+			<li>Simples</li>
+			<li>Valorados</li>
+		</ul>
+	</li>
+	<li>Arestas
+		<ul>
+			<li>Simples</li>
+			<li>Valoradas</li>
+		</ul>
+	</li>
+	<li>Grafos
+		<ul>
+			<li>Simples</li>
+			<li>Direcional</li>
 		</ul>
 	</li>
 </ul>
