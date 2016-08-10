@@ -8,6 +8,9 @@ class No(object):
 
 	def __str__(self):
 		return '['+self.identificador.__str__()+']'
+
+	def str(self):
+		return '['+self.identificador.__str__()+']'
 		
 		
 class NoValor(No):

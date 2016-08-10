@@ -11,6 +11,9 @@ class Aresta(object):
 	def __str__(self):
 		return '['+self.identificador1.__str__()+', '+self.identificador2.__str__()+']'
 
+	def str(self):
+		return '['+self.identificador1.__str__()+', '+self.identificador2.__str__()+']'
+
 class ArestaValor(Aresta):
 	"""docstring for ArestaValor"""
 	def __init__(self, identificador1, identificador2, valor):
