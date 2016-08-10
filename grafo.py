@@ -1,5 +1,5 @@
 import types
-from No import No
+from No import No, NoValorado
 from Aresta import Aresta
 from Situacao import Situacao
 
@@ -58,15 +58,31 @@ class Grafo(object):
 
 	def __str__(self):
 		string =  "("
-		string += self.nos[0].str()
+		if len(self.nos) >= 1:
+			string += self.nos[0].str()
 		for no in self.nos[1:]:
 			string += ", " + no.str()
 		string += ";\n"
-		string += self.arestas[0].str()
+		if len(self.arestas) >= 1:
+			string += self.arestas[0].str()
 		for aresta in self.arestas[1:]:
 			string += ", " + aresta.str()
 		string += ")"
 		return string
+
+class Grafo_NoValorado(Grafo):
+	"""docstring for Grafo_NoValorado"""
+	def __init__(self):
+		Grafo.__init__(self)
+
+	def insertNo(self, no):
+		if type(no) == NoValorado:
+			if self.existsNo(no.identificador):
+				return Situacao(False, "Nodulo ja existe")
+			self.nos.append(no)
+			return Situacao(True, "Nodulo inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+		
 
 class DiGrafo(Grafo):
 	"""docstring for DiGrafo"""
