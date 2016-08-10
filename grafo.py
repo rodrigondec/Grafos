@@ -105,6 +105,34 @@ class Grafo_ArestaValorada(Grafo):
 		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
 
 
+class Grafo_Aresta_e_NoValorados(Grafo):
+	"""docstring for Grafo_NoEArestaValorados"""
+	def __init__(self):
+		Grafo.__init__(self)
+
+	def insertNo(self, no):
+		if type(no) == NoValorado:
+			if self.existsNo(no.identificador):
+				return Situacao(False, "Nodulo ja existe")
+			self.nos.append(no)
+			return Situacao(True, "Nodulo inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+
+	def insertAresta(self, aresta):
+		if type(aresta) == ArestaValorada:
+			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+				if aresta.identificador1 > aresta.identificador2:
+					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
+				elif aresta.identificador1 == aresta.identificador2:
+					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+					return Situacao(False, "Aresta ja existe")
+				self.arestas.append(aresta)
+				return Situacao(True, "Aresta inserida com sucesso")
+			return Situacao(False, "1 ou 2 dos nodulos n existem")
+		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
+	
+
 class DiGrafo(Grafo):
 	"""docstring for DiGrafo"""
 	def __init__(self):
@@ -129,7 +157,7 @@ class DiGrafo(Grafo):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos nodulos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
-		
+	
 
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
