@@ -20,7 +20,7 @@ class Grafo(object):
 		if identificador1 > identificador2:
 			identificador1, identificador2 = identificador2, identificador1
 		elif identificador1 == identificador2:
-			return Situacao(False, "Identificadores iguais do 2 nodulos")
+			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
 			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
 				return True
@@ -29,10 +29,10 @@ class Grafo(object):
 	def insertNo(self, no):
 		if type(no) == No:
 			if self.existsNo(no.identificador):
-				return Situacao(False, "Nodulo ja existe")
+				return Situacao(False, "No ja existe")
 			self.nos.append(no)
-			return Situacao(True, "Nodulo inserido com sucesso")
-		return Situacao(False, "Argumento n eh do tipo Nodulo")
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo No")
 
 	def insertAresta(self, aresta):
 		if type(aresta) == Aresta:
@@ -40,12 +40,12 @@ class Grafo(object):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 
 	def printNos(self):
@@ -79,10 +79,10 @@ class Grafo_NoValorado(Grafo):
 	def insertNo(self, no):
 		if type(no) == NoValorado:
 			if self.existsNo(no.identificador):
-				return Situacao(False, "Nodulo ja existe")
+				return Situacao(False, "No ja existe")
 			self.nos.append(no)
-			return Situacao(True, "Nodulo inserido com sucesso")
-		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo NoValorado")
 	
 
 class Grafo_ArestaValorada(Grafo):
@@ -96,13 +96,13 @@ class Grafo_ArestaValorada(Grafo):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
-		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
+		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
 class Grafo_Aresta_e_NoValorados(Grafo):
@@ -113,10 +113,10 @@ class Grafo_Aresta_e_NoValorados(Grafo):
 	def insertNo(self, no):
 		if type(no) == NoValorado:
 			if self.existsNo(no.identificador):
-				return Situacao(False, "Nodulo ja existe")
+				return Situacao(False, "No ja existe")
 			self.nos.append(no)
-			return Situacao(True, "Nodulo inserido com sucesso")
-		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo NoValorado")
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
@@ -124,13 +124,13 @@ class Grafo_Aresta_e_NoValorados(Grafo):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
-		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
+		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 	
 
 class DiGrafo(Grafo):
@@ -140,7 +140,7 @@ class DiGrafo(Grafo):
 
 	def existsAresta(self, identificador1, identificador2):
 		if identificador1 == identificador2:
-			return Situacao(False, "Identificadores iguais do 2 nodulos")
+			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
 			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
 				return True
@@ -150,12 +150,12 @@ class DiGrafo(Grafo):
 		if type(aresta) == Aresta:
 			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 	
 
@@ -167,10 +167,10 @@ class DiGrafo_NoValorado(DiGrafo):
 	def insertNo(self, no):
 		if type(no) == NoValorado:
 			if self.existsNo(no.identificador):
-				return Situacao(False, "Nodulo ja existe")
+				return Situacao(False, "No ja existe")
 			self.nos.append(no)
-			return Situacao(True, "Nodulo inserido com sucesso")
-		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo NoValorado")
 	
 
 class DiGrafo_ArestaValorada(DiGrafo):
@@ -182,13 +182,13 @@ class DiGrafo_ArestaValorada(DiGrafo):
 		if type(aresta) == ArestaValorada:
 			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
-		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
+		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
 class DiGrafo_Aresta_e_NoValorados(DiGrafo):
@@ -198,22 +198,22 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 	def insertNo(self, no):
 		if type(no) == NoValorado:
 			if self.existsNo(no.identificador):
-				return Situacao(False, "Nodulo ja existe")
+				return Situacao(False, "No ja existe")
 			self.nos.append(no)
-			return Situacao(True, "Nodulo inserido com sucesso")
-		return Situacao(False, "Argumento n eh do tipo Nodulo Valorado")
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "Argumento n eh do tipo NoValorado")
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
 			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
-					return Situacao(False, "Identificadores iguais dos 2 nodulos")
+					return Situacao(False, "Identificadores iguais dos 2 Nos")
 				if self.existsAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
-			return Situacao(False, "1 ou 2 dos nodulos n existem")
-		return Situacao(False, "Argumento n eh do tipo Aresta Valorada")
+			return Situacao(False, "1 ou 2 dos Nos n existem")
+		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
 grafo = DiGrafo_Aresta_e_NoValorados()
