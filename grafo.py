@@ -11,6 +11,9 @@ class Grafo(object):
 		super(Grafo, self).__init__()
 		self.nos = []
 		self.arestas = []
+		self.arvores = {}
+		self.arvores['bfs'] = {}
+		self.arvores['dfs'] = {}
 
 	def existsNo(self, identificador):
 		for no in self.nos:
