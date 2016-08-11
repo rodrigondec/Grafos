@@ -50,17 +50,55 @@ class Grafo(object):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == Aresta:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
+
+	def bfs(self, identificador):
+		if not self.getNo(identificador):
+			return Situacao(False, "No n existe no grafo")
+
+		self.arvores['bfs'][identificador] = Arvore(self.getNo(identificador))
+	
+		distancia = {}
+		pai = {}
+		color = {}
+		for no in self.nos:
+			color[no.identificador] = 'white'
+			distancia[no.identificador] = 0
+			pai[no.identificador] = None
+
+		# print color
+		# print distancia
+		# print pai
+
+		color[identificador] = 'gray'
+	
+		fila = Queue.Queue()
+		fila.put(identificador)
+
+		while not fila.empty():
+			u = fila.get()
+			adjs = self.getAdj(u)
+			for adj in adjs:
+				if color[adj] == 'white':
+					color[adj] = 'gray'
+					distancia[adj] = distancia[u] + 1
+					pai[adj] = u
+					fila.put(adj)
+					self.arvores['bfs'][identificador].insertNo(NoArvore(adj, pai[adj], distancia[adj]))
+			color[u] = 'black'
+
+		return self.arvores['bfs'][identificador]
+
 
 	def printNos(self):
 		for no in self.nos:
