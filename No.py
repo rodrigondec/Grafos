@@ -16,8 +16,22 @@ class NoValorado(No):
 	def __init__(self, identificador, valor):
 		No.__init__(self, identificador)
 		self.valor = valor
+
 	def __str__(self):
 		return '['+self.identificador.__str__()+'] {'+self.valor.__str__()+'}'
 
 	def str(self):
 		return '['+self.identificador.__str__()+'] {'+self.valor.__str__()+'}'
+
+
+class NoArvore(No):
+	def __init__(self, identificador, pai, distancia):
+		No.__init__(self, identificador)
+		self.pai = pai
+		self.distancia = distancia
+
+	def __str__(self):
+		return '['+self.identificador.__str__()+'] {'+self.pai.__str__()+'} ('+self.distancia.__str__()+')'
+
+	def str(self):
+		return '['+self.identificador.__str__()+'] {'+self.pai.__str__()+'} ('+self.distancia.__str__()+')'
