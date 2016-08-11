@@ -31,9 +31,18 @@ class Grafo(object):
 				return aresta
 		return False
 
+	def getAdj(self, identificador):
+		adj = []
+		for aresta in self.arestas:
+			if aresta.identificador1 == identificador:
+				adj.append(aresta.identificador2)
+			elif aresta.identificador2 == identificador:
+				adj.append(aresta.identificador1)
+		return adj
+
 	def insertNo(self, no):
 		if type(no) == No:
-			if self.existsNo(no.identificador):
+			if self.getNo(no.identificador):
 				return Situacao(False, "No ja existe")
 			self.nos.append(no)
 			return Situacao(True, "No inserido com sucesso")
