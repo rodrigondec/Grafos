@@ -21,6 +21,15 @@
 			Por exmplo se possuirmos um nó no qual <i>identificador</i> = <b>1</b> e <i>valor</i> = <b>15</b>, sua string ficará será "[1] {15}".
 		</p>
 	</li>
+	<li>
+		<label><b>Nó arvore</b> => "<b>NoArvore</b>"</label>
+		<p>
+			A classe implementada para o nó de arvore está implementada no arquivo "<b>No.py</b>". <br>
+			Ela é uma extensão da classe "<b>No</b>" citada acima com o acréscimo dos atributos <i>pai</i> e <i>distancia</i>. <br>
+			O stringfy herdado da classe foi adaptada para acrescentar o atributo <i>valor</i>. <br />
+			Por exmplo se possuirmos um nó no qual <i>identificador</i> = <b>1</b>, <i>pai</i> = <b>15</b> e <i>distancia</i> = 2, sua string ficará será "[1] {15} (2)".
+		</p>
+	</li>
 </ul>
 <h2>Arestas</h2>
 <h3>Tipos</h3>
@@ -42,6 +51,18 @@
 			O stringfy herdado da classe foi adaptada para acrescentar o atributo <i>valor</i>.
 			Por exmplo se possuirmos uma aresta na qual liga o nó <i>identificador</i> = <b>1</b> com o nó <i>identificador</i> = <b>2</b> com um <i>valor</i> = <b>15</b>, sua string ficará será "[1, 2] {15}".
 		</p>
+	</li>
+</ul>
+<h2>Árvore</h2>
+<h3>Tipo</h3>
+<ul>
+	<li>
+		<label><b>Arvore simples</b> => "<b>Arvore</b>"</label>
+		<p>
+			A classe implementada para a arvore simples está implementada no arquivo "<b>Arvore.py</b>". <br>
+			Ela possui dois atributos <i>raiz</i> e <i>nos</i> que são referentes ao nó raiz e à lista de nos da arvore respectivamente, e um método para inserir um nó na árvore.
+		</p>
+		<p></p>
 	</li>
 </ul>
 <h2>Grafos</h2>
