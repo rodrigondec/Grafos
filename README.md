@@ -80,7 +80,7 @@
 				<li><i>getAdj(identificador)</i>: método que retorna uma lista dos nós adjacentes do nó de <i>identificador</i>.</li>
 				<li><i>insertNo(no)</i>: método que insere o <i>nó</i> passado como parâmetro no grafo.</li>
 				<li><i>insertAresta(aresta)</i>: método que insere a <i>aresta</i> passada como parâmetro no grafo.</li>
-				<li><i>bfs(identificador)</i>: método que retorna a arvore utilizando o algoritmo breadth-first-search tendo como raíz o nó de <i>identificador</i>.</li>
+				<li><i>bfs(identificador)</i>: método que retorna a arvore criada utilizando o algoritmo breadth-first search tendo como raíz o nó de <i>identificador</i>.</li>
 				<li><i>printNos()</i>: método que imprime todos os nós do grafo.</li>
 				<li><i>printArestas()</i>: método que imprime todas as arestas do grafo.</li>
 				<li><i>str()</i>: método que imprime todo o grafo. seguindo o modelo "( <b>nó 1</b>, <b>nó 2</b>, <b>nó n</b>; <b>aresta 1</b>, <b>aresta 2</b>, <b>aresta n</b> )"</li>
