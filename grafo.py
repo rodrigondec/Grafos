@@ -130,7 +130,7 @@ class Grafo_NoValorado(Grafo):
 
 	def insertNo(self, no):
 		if type(no) == NoValorado:
-			if self.existsNo(no.identificador):
+			if self.getNo(no.identificador):
 				return Situacao(False, "No ja existe")
 			self.nos.append(no)
 			return Situacao(True, "No inserido com sucesso")
@@ -144,12 +144,12 @@ class Grafo_ArestaValorada(Grafo):
 		
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -164,7 +164,7 @@ class Grafo_Aresta_e_NoValorados(Grafo):
 
 	def insertNo(self, no):
 		if type(no) == NoValorado:
-			if self.existsNo(no.identificador):
+			if self.getNo(no.identificador):
 				return Situacao(False, "No ja existe")
 			self.nos.append(no)
 			return Situacao(True, "No inserido com sucesso")
@@ -172,12 +172,12 @@ class Grafo_Aresta_e_NoValorados(Grafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 > aresta.identificador2:
 					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
 				elif aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -190,7 +190,7 @@ class DiGrafo(Grafo):
 	def __init__(self):
 		Grafo.__init__(self)
 
-	def existsAresta(self, identificador1, identificador2):
+	def getAresta(self, identificador1, identificador2):
 		if identificador1 == identificador2:
 			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
@@ -200,10 +200,10 @@ class DiGrafo(Grafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == Aresta:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -218,7 +218,7 @@ class DiGrafo_NoValorado(DiGrafo):
 
 	def insertNo(self, no):
 		if type(no) == NoValorado:
-			if self.existsNo(no.identificador):
+			if self.getNo(no.identificador):
 				return Situacao(False, "No ja existe")
 			self.nos.append(no)
 			return Situacao(True, "No inserido com sucesso")
@@ -232,10 +232,10 @@ class DiGrafo_ArestaValorada(DiGrafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -249,7 +249,7 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 
 	def insertNo(self, no):
 		if type(no) == NoValorado:
-			if self.existsNo(no.identificador):
+			if self.getNo(no.identificador):
 				return Situacao(False, "No ja existe")
 			self.nos.append(no)
 			return Situacao(True, "No inserido com sucesso")
@@ -257,10 +257,10 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.existsNo(aresta.identificador1) and self.existsNo(aresta.identificador2):
+			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
 				if aresta.identificador1 == aresta.identificador2:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.existsAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.identificador1, aresta.identificador2):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -268,14 +268,23 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
-grafo = DiGrafo_Aresta_e_NoValorados()
+grafo = DiGrafo()
 
-grafo.insertNo(NoValorado(1, 10))
+grafo.insertNo(No(1))
 
-grafo.insertNo(NoValorado(2, 20))
+grafo.insertNo(No(4))
 
-grafo.insertAresta(ArestaValorada(2, 1, 15))
+grafo.insertNo(No(3))
 
-grafo.insertAresta(ArestaValorada(1, 2, 30))
+grafo.insertAresta(Aresta(4, 1))
 
-print grafo
+grafo.insertAresta(Aresta(3, 4))
+
+grafo.bfs(1)
+
+grafo.bfs(4)
+
+grafo.bfs(3)
+
+for arvore in grafo.arvores['bfs']:
+	print grafo.arvores['bfs'][arvore]
