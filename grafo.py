@@ -15,20 +15,20 @@ class Grafo(object):
 		self.arvores['bfs'] = {}
 		self.arvores['dfs'] = {}
 
-	def existsNo(self, identificador):
+	def getNo(self, identificador):
 		for no in self.nos:
 			if no.identificador == identificador:
-				return True
+				return no
 		return False
 
-	def existsAresta(self, identificador1, identificador2):
+	def getAresta(self, identificador1, identificador2):
 		if identificador1 > identificador2:
 			identificador1, identificador2 = identificador2, identificador1
 		elif identificador1 == identificador2:
 			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
 			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
-				return True
+				return aresta
 		return False
 
 	def insertNo(self, no):
