@@ -1,9 +1,9 @@
 import types
 import Queue
-from No import No, NoValorado, NoArvore
-from Aresta import Aresta, ArestaValorada
-from Arvore import Arvore
-from Situacao import Situacao
+from no import No, NoValorado, NoArvore
+from aresta import Aresta, ArestaValorada
+from arvore import Arvore
+from situacao import Situacao
 
 class Grafo(object):
 
@@ -268,23 +268,23 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
-grafo = DiGrafo()
+# grafo = DiGrafo()
 
-grafo.insertNo(No(1))
+# grafo.insertNo(No(1))
 
-grafo.insertNo(No(4))
+# grafo.insertNo(No(4))
 
-grafo.insertNo(No(3))
+# grafo.insertNo(No(3))
 
-grafo.insertAresta(Aresta(4, 1))
+# grafo.insertAresta(Aresta(4, 1))
 
-grafo.insertAresta(Aresta(3, 4))
+# grafo.insertAresta(Aresta(3, 4))
 
-grafo.bfs(1)
+# grafo.bfs(1)
 
-grafo.bfs(4)
+# grafo.bfs(4)
 
-grafo.bfs(3)
+# grafo.bfs(3)
 
-for arvore in grafo.arvores['bfs']:
-	print grafo.arvores['bfs'][arvore]
+# for arvore in grafo.arvores['bfs']:
+# 	print grafo.arvores['bfs'][arvore]

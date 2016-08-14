@@ -1,6 +1,6 @@
 import types
-from No import No, NoArvore
-from Situacao import Situacao
+from no import No, NoArvore
+from situacao import Situacao
 
 class Arvore(object):
 	"""docstring for Arvore"""
