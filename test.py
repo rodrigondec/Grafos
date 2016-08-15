@@ -7,7 +7,7 @@ class TestStringMethods(unittest.TestCase):
 	def setUp(self):
 		self.grafo = Grafo()
 
-	def test_upper(self):
+	def test_bfs(self):
 		self.grafo.insertNo(No(1))
 		self.grafo.insertNo(No(2))
 		self.grafo.insertNo(No(3))
