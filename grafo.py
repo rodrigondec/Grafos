@@ -193,6 +193,13 @@ class DiGrafo(Grafo):
 	def __init__(self):
 		Grafo.__init__(self)
 
+	def getAdj(self, identificador):
+		adj = []
+		for aresta in self.arestas:
+			if aresta.identificador1 == identificador:
+				adj.append(aresta.identificador2)
+		return adj
+
 	def getAresta(self, identificador1, identificador2):
 		if identificador1 == identificador2:
 			return Situacao(False, "Identificadores iguais do 2 nos")
