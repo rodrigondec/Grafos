@@ -1,8 +1,8 @@
 import types
 import Queue
-from no import No, NoValorado, NoArvore
+from no import No, NoValorado, NoArvore, NoArvoreDist
 from aresta import Aresta, ArestaValorada
-from arvore import Arvore
+from arvore import Arvore, ArvoreDist
 from situacao import Situacao
 
 class Grafo(object):
@@ -66,7 +66,7 @@ class Grafo(object):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
 
-		self.arvores['bfs'][identificador] = Arvore(self.getNo(identificador))
+		self.arvores['bfs'][identificador] = ArvoreDist(self.getNo(identificador))
 	
 		distancia = {}
 		pai = {}
@@ -94,8 +94,11 @@ class Grafo(object):
 					distancia[adj] = distancia[u] + 1
 					pai[adj] = u
 					fila.put(adj)
-					self.arvores['bfs'][identificador].insertNo(NoArvore(adj, pai[adj], distancia[adj]))
+					self.arvores['bfs'][identificador].insertNo(NoArvoreDist(adj, pai[adj], distancia[adj]))
 			color[u] = 'black'
+
+		# print color
+		# print pai
 
 		return self.arvores['bfs'][identificador]
 
