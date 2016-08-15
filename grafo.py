@@ -102,6 +102,39 @@ class Grafo(object):
 
 		return self.arvores['bfs'][identificador]
 
+	def dfs(self, identificador):
+		if not self.getNo(identificador):
+			return Situacao(False, "No n existe no grafo")
+
+		self.arvores['dfs'][identificador] = Arvore(self.getNo(identificador))
+	
+		pai = {}
+		color = {}
+		for no in self.nos:
+			color[no.identificador] = 'white'
+			pai[no.identificador] = None
+
+		pilha = [identificador]
+		
+		
+		while pilha:
+			u = pilha.pop()
+			color[u] = 'gray'
+			adjs = self.getAdj(u)
+			for adj in adjs:
+				if color[adj] == 'white':
+					pai[adj] = u
+					pilha.append(adj)
+			color[u] = 'black'
+
+		# print color
+		# print pai
+		
+		for key in pai:
+			if key != identificador:
+				self.arvores['dfs'][identificador].insertNo(NoArvore(key, pai[key]))
+		return self.arvores['dfs'][identificador]
+
 
 	def printNos(self):
 		for no in self.nos:
@@ -278,23 +311,25 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
 
 
-# grafo = DiGrafo()
+grafo = Grafo()
 
-# grafo.insertNo(No(1))
+grafo.insertNo(No(1))
+grafo.insertNo(No(2))
+grafo.insertNo(No(4))
+grafo.insertNo(No(3))
+grafo.insertNo(No(5))
+grafo.insertNo(No(6))
 
-# grafo.insertNo(No(4))
+grafo.insertAresta(Aresta(1, 2))
+grafo.insertAresta(Aresta(1, 5))
+grafo.insertAresta(Aresta(5, 4))
+grafo.insertAresta(Aresta(2, 3))
+grafo.insertAresta(Aresta(3, 4))
+grafo.insertAresta(Aresta(4, 6))
 
-# grafo.insertNo(No(3))
+print grafo.bfs(1)
 
-# grafo.insertAresta(Aresta(4, 1))
-
-# grafo.insertAresta(Aresta(3, 4))
-
-# grafo.bfs(1)
-
-# grafo.bfs(4)
-
-# grafo.bfs(3)
+print grafo.dfs(1)
 
 # for arvore in grafo.arvores['bfs']:
 # 	print grafo.arvores['bfs'][arvore]
