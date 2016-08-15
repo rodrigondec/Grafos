@@ -1,5 +1,5 @@
 import types
-from no import No, NoArvore
+from no import No, NoArvore, NoArvoreDist
 from situacao import Situacao
 
 class Arvore(object):
@@ -23,3 +23,13 @@ class Arvore(object):
 		for no in self.nos[1:]:
 			string += ", " + no.str()
 		return string
+
+class ArvoreDist(Arvore):
+	def __init__(self, raiz):
+		Arvore.__init__(self, raiz)
+
+	def insertNo(self, no):
+		if type(no) == NoArvoreDist:
+			self.nos.append(no)
+			return Situacao(True, "No inserido com sucesso")
+		return Situacao(False, "No n eh do tipo NoArvoreDist")
