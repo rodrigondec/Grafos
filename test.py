@@ -1,11 +1,11 @@
-from grafo import Grafo
+from grafo import Grafo, DiGrafo
 from no import No
 from aresta import Aresta
 import unittest
 
 class TestStringMethods(unittest.TestCase):
 	def setUp(self):
-		self.grafo = Grafo()
+		self.grafo = DiGrafo()
 
 	def test_atingivel(self):
 		self.grafo.insertNo(No(1))

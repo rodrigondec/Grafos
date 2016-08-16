@@ -109,7 +109,6 @@ class Grafo(object):
 			pais[no.identificador] = None
 
 		while self.selecionar_brancos(cores):
-
 			fila = Queue.Queue()
 			fila.put(self.selecionar_brancos(cores)[0])
 
@@ -120,6 +119,7 @@ class Grafo(object):
 				adjs = self.getAdj(no)
 				# print 'No: '+no.__str__()
 				# print 'adjs: '+adjs.__str__()
+				# print cores
 				for adj in adjs:
 					if adj == pais[no]:
 						continue
@@ -128,7 +128,6 @@ class Grafo(object):
 						pais[adj] = no
 						cores[adj] = 'gray'
 					elif cores[adj] == 'gray':
-						# print cores
 						return True
 		return False
 
@@ -341,6 +340,12 @@ class DiGrafo(Grafo):
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 	
+	def ciclico(self):
+		return None
+
+	def num_componentes(self):
+		return None
+
 
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
