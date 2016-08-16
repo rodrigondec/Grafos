@@ -62,6 +62,14 @@ class Grafo(object):
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 
+	def atingivel(self, identificador1, identificador2):
+		dados = self.dfs(identificador1)
+
+		if dados['cores'][identificador2] == 'black':
+			return True
+		
+		return False;
+
 	def bfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
