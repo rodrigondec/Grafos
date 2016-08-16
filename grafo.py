@@ -128,6 +128,32 @@ class Grafo(object):
 						return True
 		return False
 
+	def num_componentes(self):
+		cores = {}
+		pais = {}
+		for no in self.nos:
+			cores[no.identificador] = 'white'
+			pais[no.identificador] = None
+		num_componentes = 0
+		while self.selecionar_brancos(cores):
+			num_componentes += 1
+			fila = Queue.Queue()
+			fila.put(self.selecionar_brancos(cores)[0])
+
+			cores[self.selecionar_brancos(cores)[0]] = 'gray'
+			
+			while not fila.empty():
+				no = fila.get()
+				adjs = self.getAdj(no)
+				# print 'No: '+no.__str__()
+				# print 'adjs: '+adjs.__str__()
+				for adj in adjs:
+					if cores[adj] == 'white':
+						fila.put(adj)
+						pais[adj] = no
+						cores[adj] = 'gray'
+		return num_componentes
+
 	def bfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")

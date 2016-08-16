@@ -165,6 +165,43 @@ class TestStringMethods(unittest.TestCase):
 
 		self.assertEqual(self.grafo.ciclico(), False)
 
+	def test_num_componentes(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.assertEqual(len(self.grafo.nos), 5)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.assertEqual(len(self.grafo.arestas), 4)
+
+		self.assertEqual(self.grafo.num_componentes(), 1)
+
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.assertEqual(len(self.grafo.nos), 7)
+
+		self.grafo.insertAresta(Aresta(7, 6))
+		self.assertEqual(len(self.grafo.arestas), 5)
+
+		self.assertEqual(self.grafo.num_componentes(), 2)
+
+		self.grafo.insertNo(No(8))
+		self.grafo.insertNo(No(9))
+		self.grafo.insertNo(No(10))
+		self.assertEqual(len(self.grafo.nos), 10)
+
+		self.grafo.insertAresta(Aresta(8, 9))
+		self.grafo.insertAresta(Aresta(9, 10))
+		self.grafo.insertAresta(Aresta(8, 10))
+		self.assertEqual(len(self.grafo.arestas), 8)
+
+		self.assertEqual(self.grafo.num_componentes(), 3)
+
 	def test_bfs(self):
 		self.grafo.insertNo(No(1))
 		self.grafo.insertNo(No(2))
