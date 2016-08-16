@@ -15,6 +15,15 @@ class Arvore(object):
 			return Situacao(True, "No inserido com sucesso")
 		return Situacao(False, "No n eh do tipo NoArvore")
 
+	def getNo(self, identificador):
+		if self.raiz.identificador == identificador:
+			return self.raiz
+		for no in self.nos:
+			if no.identificador == identificador:
+				return no
+		return False
+
+
 	def __str__(self):
 		string = "Raiz: "+self.raiz.str()
 		string += "\nCorpo: "
