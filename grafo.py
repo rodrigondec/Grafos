@@ -68,6 +68,21 @@ class Grafo(object):
 		
 		return False;
 
+	def caminho(self, identificador1, identificador2):
+		dados = self.bfs(identificador1)
+		if dados['cores'][identificador2] == 'black':
+			caminho = []
+		
+			no = dados['arvore'].getNo(identificador2)
+			while 1:
+				caminho.append(no.identificador)
+				if no.identificador == identificador1:
+					break
+				no = dados['arvore'].getNo(no.pai)
+			caminho.reverse()
+			return caminho
+		return False
+
 	def bfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
