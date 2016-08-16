@@ -397,5 +397,3 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
-
-Grafo.teste()
