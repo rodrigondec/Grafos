@@ -7,6 +7,10 @@ from situacao import Situacao
 
 class Grafo(object):
 
+	@classmethod
+	def teste(cls):
+		print 'teste'
+
 	def __init__(self):
 		super(Grafo, self).__init__()
 		self.nos = []
@@ -243,7 +247,6 @@ class Grafo(object):
 		string += " )"
 		return string
 
-
 class Grafo_NoValorado(Grafo):
 	"""docstring for Grafo_NoValorado"""
 	def __init__(self):
@@ -394,3 +397,5 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
+
+Grafo.teste()
