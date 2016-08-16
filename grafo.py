@@ -94,21 +94,16 @@ class Grafo(object):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
 
-		self.arvores['bfs'][identificador] = ArvoreDist(self.getNo(identificador))
-	
-		distancia = {}
-		pai = {}
-		color = {}
+		arvore = ArvoreDist(self.getNo(identificador))
+		distancias = {}
+		pais = {}
+		cores = {}
 		for no in self.nos:
-			color[no.identificador] = 'white'
-			distancia[no.identificador] = 0
-			pai[no.identificador] = None
+			cores[no.identificador] = 'white'
+			distancias[no.identificador] = 0
+			pais[no.identificador] = None
 
-		# print color
-		# print distancia
-		# print pai
-
-		color[identificador] = 'gray'
+		cores[identificador] = 'gray'
 	
 		fila = Queue.Queue()
 		fila.put(identificador)
@@ -117,52 +112,50 @@ class Grafo(object):
 			u = fila.get()
 			adjs = self.getAdj(u)
 			for adj in adjs:
-				if color[adj] == 'white':
-					color[adj] = 'gray'
-					distancia[adj] = distancia[u] + 1
-					pai[adj] = u
+				if cores[adj] == 'white':
+					cores[adj] = 'gray'
+					distancias[adj] = distancias[u] + 1
+					pais[adj] = u
 					fila.put(adj)
-					self.arvores['bfs'][identificador].insertNo(NoArvoreDist(adj, pai[adj], distancia[adj]))
-			color[u] = 'black'
+					arvore.insertNo(NoArvoreDist(adj, pais[adj], distancias[adj]))
+			cores[u] = 'black'
 
-		# print color
+		# print cores
 		# print pai
 
-		return self.arvores['bfs'][identificador]
+		return {'arvore': arvore, 'pais': pais, 'cores': cores, 'distancias': distancias}
 
 	def dfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
 
-		self.arvores['dfs'][identificador] = Arvore(self.getNo(identificador))
+		arvore = Arvore(self.getNo(identificador))
 	
-		pai = {}
-		color = {}
+		pais = {}
+		cores = {}
 		for no in self.nos:
-			color[no.identificador] = 'white'
-			pai[no.identificador] = None
+			cores[no.identificador] = 'white'
+			pais[no.identificador] = None
 
 		pilha = [identificador]
 		
-		
 		while pilha:
 			u = pilha.pop()
-			color[u] = 'gray'
+			cores[u] = 'gray'
 			adjs = self.getAdj(u)
 			for adj in adjs:
-				if color[adj] == 'white':
-					pai[adj] = u
+				if cores[adj] == 'white':
+					pais[adj] = u
 					pilha.append(adj)
-			color[u] = 'black'
+			cores[u] = 'black'
 
-		# print color
+		# print cores
 		# print pai
 		
-		for key in pai:
+		for key in pais:
 			if key != identificador:
-				self.arvores['dfs'][identificador].insertNo(NoArvore(key, pai[key]))
-		return self.arvores['dfs'][identificador]
-
+				arvore.insertNo(NoArvore(key, pais[key]))
+		return {'arvore': arvore, 'pais': pais, 'cores': cores}
 
 	def printNos(self):
 		for no in self.nos:
