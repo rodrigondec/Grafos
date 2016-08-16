@@ -83,6 +83,13 @@ class Grafo(object):
 			return caminho
 		return False
 
+	def conexo(self):
+		dados = self.bfs(self.nos[0].identificador)
+		for cor in dados['cores']:
+			if dados['cores'][cor] == 'white':
+				return False
+		return True
+
 	def bfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
