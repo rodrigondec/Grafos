@@ -55,6 +55,93 @@ class TestStringMethods(unittest.TestCase):
 
 		self.assertEqual(self.grafo.conexo(), False)
 
+	def test_ciclico_true(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.assertEqual(len(self.grafo.nos), 6)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 2))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(3, 4))
+		self.grafo.insertAresta(Aresta(4, 6))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.ciclico(), True)
+
+	def test_ciclico_false(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.assertEqual(len(self.grafo.nos), 6)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(4, 6))
+		self.assertEqual(len(self.grafo.arestas), 5)
+
+		self.assertEqual(self.grafo.ciclico(), False)
+
+	def test_ciclico_n_conexo_true(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.grafo.insertNo(No(8))
+		self.grafo.insertNo(No(9))
+		self.grafo.insertNo(No(10))
+		self.assertEqual(len(self.grafo.nos), 10)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(7, 6))
+		self.grafo.insertAresta(Aresta(8, 9))
+		self.grafo.insertAresta(Aresta(9, 10))
+		self.grafo.insertAresta(Aresta(8, 10))
+		self.assertEqual(len(self.grafo.arestas), 8)
+
+		self.assertEqual(self.grafo.ciclico(), True)
+
+	def test_ciclico_n_conexo_false(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.grafo.insertNo(No(8))
+		self.grafo.insertNo(No(9))
+		self.grafo.insertNo(No(10))
+		self.assertEqual(len(self.grafo.nos), 10)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(7, 6))
+		self.grafo.insertAresta(Aresta(8, 9))
+		self.grafo.insertAresta(Aresta(9, 10))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.ciclico(), False)
+
 	def test_bfs(self):
 		self.grafo.insertNo(No(1))
 		self.grafo.insertNo(No(2))

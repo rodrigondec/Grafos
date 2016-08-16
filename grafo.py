@@ -90,6 +90,44 @@ class Grafo(object):
 				return False
 		return True
 
+	def selecionar_brancos(self, cores):
+		brancos = []
+		for key in cores:
+			if cores[key] == 'white':
+				brancos.append(key)
+		return brancos
+
+	def ciclico(self):
+		cores = {}
+		pais = {}
+		for no in self.nos:
+			cores[no.identificador] = 'white'
+			pais[no.identificador] = None
+
+		while self.selecionar_brancos(cores):
+
+			fila = Queue.Queue()
+			fila.put(self.selecionar_brancos(cores)[0])
+
+			cores[self.selecionar_brancos(cores)[0]] = 'gray'
+			
+			while not fila.empty():
+				no = fila.get()
+				adjs = self.getAdj(no)
+				# print 'No: '+no.__str__()
+				# print 'adjs: '+adjs.__str__()
+				for adj in adjs:
+					if adj == pais[no]:
+						continue
+					if cores[adj] == 'white':
+						fila.put(adj)
+						pais[adj] = no
+						cores[adj] = 'gray'
+					elif cores[adj] == 'gray':
+						# print cores
+						return True
+		return False
+
 	def bfs(self, identificador):
 		if not self.getNo(identificador):
 			return Situacao(False, "No n existe no grafo")
