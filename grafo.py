@@ -12,8 +12,6 @@ class Grafo(object):
 		self.nos = []
 		self.arestas = []
 		self.arvores = {}
-		self.arvores['bfs'] = {}
-		self.arvores['dfs'] = {}
 
 	def getNo(self, identificador):
 		for no in self.nos:
@@ -317,27 +315,3 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo ArestaValorada")
-
-
-grafo = Grafo()
-
-grafo.insertNo(No(1))
-grafo.insertNo(No(2))
-grafo.insertNo(No(4))
-grafo.insertNo(No(3))
-grafo.insertNo(No(5))
-grafo.insertNo(No(6))
-
-grafo.insertAresta(Aresta(1, 2))
-grafo.insertAresta(Aresta(1, 5))
-grafo.insertAresta(Aresta(5, 4))
-grafo.insertAresta(Aresta(2, 3))
-grafo.insertAresta(Aresta(3, 4))
-grafo.insertAresta(Aresta(4, 6))
-
-print grafo.bfs(1)
-
-print grafo.dfs(1)
-
-# for arvore in grafo.arvores['bfs']:
-# 	print grafo.arvores['bfs'][arvore]
