@@ -246,6 +246,7 @@ class Grafo(object):
 		string += " )"
 		return string
 
+
 class Grafo_NoValorado(Grafo):
 	"""docstring for Grafo_NoValorado"""
 	def __init__(self):
