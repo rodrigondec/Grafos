@@ -28,7 +28,27 @@ class TestStringMethods(unittest.TestCase):
 
 		self.assertEqual(self.grafo.atingivel(1, 6), True)
 
+		self.assertEqual(self.grafo.atingivel(6, 1), False)
+
 		self.assertEqual(self.grafo.atingivel(1, 7), False)
+
+	def test_ord_topol(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.assertEqual(len(self.grafo.nos), 6)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(4, 6))
+		self.assertEqual(len(self.grafo.arestas), 5)
+
+		self.grafo.ord_topol()
 
 	def test_bfs(self):
 		self.grafo.insertNo(No(1))
