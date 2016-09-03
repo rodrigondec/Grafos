@@ -387,6 +387,18 @@ class DiGrafo(Grafo):
 				fila.put(no.identificador)
 				ordem.append(no.identificador)
 
+		while not fila.empty():
+			u = fila.get()
+			grafo.del_no(u)
+
+			for no in grafo.nos:
+				if not no.identificador in ordem:
+					if grafo.grau_in(no.identificador) == 0:
+						fila.put(no.identificador)
+						ordem.append(no.identificador)
+
+		return ordem
+
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
 	def __init__(self):
