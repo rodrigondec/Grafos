@@ -5,7 +5,7 @@ import unittest
 
 class TestStringMethods(unittest.TestCase):
 	def setUp(self):
-		self.grafo = DiGrafo()
+		self.grafo = Grafo()
 
 	def test_atingivel(self):
 		self.grafo.insertNo(No(1))
@@ -113,7 +113,7 @@ class TestStringMethods(unittest.TestCase):
 		self.grafo.insertAresta(Aresta(2, 3))
 		self.grafo.insertAresta(Aresta(4, 6))
 		self.assertEqual(len(self.grafo.arestas), 5)
-
+		print self.grafo
 		self.assertEqual(self.grafo.ciclico(), False)
 
 	def test_ciclico_n_conexo_true(self):
