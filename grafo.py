@@ -373,6 +373,8 @@ class DiGrafo(Grafo):
 		self.nos.remove(no)
 		while self.getSsabagaca(identificador):
 			self.arestas.remove(self.getSsabagaca(identificador))
+
+	def ord_topol(self):
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
 	def __init__(self):
