@@ -382,6 +382,11 @@ class DiGrafo(Grafo):
 		grafo = copy.deepcopy(self)
 
 		fila = Queue.Queue()
+		for no in grafo.nos:
+			if grafo.grau_in(no.identificador) == 0:
+				fila.put(no.identificador)
+				ordem.append(no.identificador)
+
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
 	def __init__(self):
