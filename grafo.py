@@ -330,12 +330,18 @@ class DiGrafo(Grafo):
 				return True
 		return False
 
+	def getSsabagaca(self, identificador):
+		for aresta in self.arestas:
+			if aresta.origem == identificador or aresta.destino == identificador:
+				return aresta
+		return False
+
 	def insertAresta(self, aresta):
 		if type(aresta) == Aresta:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
