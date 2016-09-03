@@ -362,6 +362,11 @@ class DiGrafo(Grafo):
 				grau += 1
 		return grau
 
+	def del_no(self, identificador):
+		no = self.getNo(identificador)
+		self.nos.remove(no)
+		while self.getSsabagaca(identificador):
+			self.arestas.remove(self.getSsabagaca(identificador))
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
 	def __init__(self):
