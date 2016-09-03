@@ -375,6 +375,13 @@ class DiGrafo(Grafo):
 			self.arestas.remove(self.getSsabagaca(identificador))
 
 	def ord_topol(self):
+		if self.ciclico():
+			return Situacao(False, "O grafo eh ciclico")
+		ordem = []
+
+		grafo = copy.deepcopy(self)
+
+		fila = Queue.Queue()
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
 	def __init__(self):
