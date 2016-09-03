@@ -347,12 +347,6 @@ class DiGrafo(Grafo):
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
-	
-	def ciclico(self):
-		return None
-
-	def num_componentes(self):
-		return None
 
 	def grau_in(self, identificador):
 		grau = 0
@@ -392,10 +386,9 @@ class DiGrafo(Grafo):
 			grafo.del_no(u)
 
 			for no in grafo.nos:
-				if not no.identificador in ordem:
-					if grafo.grau_in(no.identificador) == 0:
-						fila.put(no.identificador)
-						ordem.append(no.identificador)
+				if not no.identificador in ordem and grafo.grau_in(no.identificador) == 0:
+					fila.put(no.identificador)
+					ordem.append(no.identificador)
 
 		return ordem
 
