@@ -1,5 +1,6 @@
 import types
 import Queue
+import copy
 from no import No, NoValorado, NoArvore, NoArvoreDist
 from aresta import Aresta, ArestaValorada
 from arvore import Arvore, ArvoreDist
@@ -347,6 +348,19 @@ class DiGrafo(Grafo):
 	def num_componentes(self):
 		return None
 
+	def grau_in(self, identificador):
+		grau = 0
+		for aresta in self.arestas:
+			if aresta.destino == identificador:
+				grau += 1
+		return grau
+
+	def grau_out(self, identificador):
+		grau = 0
+		for aresta in self.arestas:
+			if aresta.origem == identificador:
+				grau += 1
+		return grau
 
 class DiGrafo_NoValorado(DiGrafo):
 	"""docstring for ClassName"""
