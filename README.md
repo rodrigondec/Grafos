@@ -38,7 +38,7 @@
 		<label><b>Aresta simples</b> => "<b>Aresta</b>"</label>
 		<p>
 			A classe implementada para a aresta simples está no arquivo "<b>Aresta.py</b>". <br>
-			Ela possui dois atributos <i>identificador1</i> e <i>identificador2</i> que são referentes aos identificadores dos dois nós conexos, e um método para retornar a aresta como string. <br />
+			Ela possui dois atributos <i>origem</i> e <i>destino</i> que são referentes aos identificadores dos dois nós conexos, e um método para retornar a aresta como string. <br />
 			Por exmplo se possuirmos uma aresta na qual liga o nó <i>identificador</i> = <b>1</b> com o nó <i>identificador</i> = <b>2</b>, sua string ficará será "[1, 2]".
 		</p>
 		<p></p>
@@ -76,7 +76,7 @@
 			Essa classe também possui os seguintes métodos:
 			<ul>
 				<li><i>getNo(identificador)</i>: método que retorna o objeto nó se o nó de <i>identificador</i> existir no grafo.</li>
-				<li><i>getAresta(identificador1, identificador2)</i>: método que retorna o objeto aresta se a aresta de <i>identificador1</i> e <i>identificador2</i> existir no grafo.</li>
+				<li><i>getAresta(origem, destino)</i>: método que retorna o objeto aresta se a aresta de <i>origem</i> e <i>destino</i> existir no grafo.</li>
 				<li><i>getAdj(identificador)</i>: método que retorna uma lista dos nós adjacentes do nó de <i>identificador</i>.</li>
 				<li><i>insertNo(no)</i>: método que insere o <i>nó</i> passado como parâmetro no grafo.</li>
 				<li><i>insertAresta(aresta)</i>: método que insere a <i>aresta</i> passada como parâmetro no grafo.</li>

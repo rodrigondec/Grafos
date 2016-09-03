@@ -23,23 +23,23 @@ class Grafo(object):
 				return no
 		return False
 
-	def getAresta(self, identificador1, identificador2):
-		if identificador1 > identificador2:
-			identificador1, identificador2 = identificador2, identificador1
-		elif identificador1 == identificador2:
+	def getAresta(self, origem, destino):
+		if origem > destino:
+			origem, destino = destino, origem
+		elif origem == destino:
 			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
-			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
+			if aresta.origem == origem and aresta.destino == destino:
 				return aresta
 		return False
 
 	def getAdj(self, identificador):
 		adj = []
 		for aresta in self.arestas:
-			if aresta.identificador1 == identificador:
-				adj.append(aresta.identificador2)
-			elif aresta.identificador2 == identificador:
-				adj.append(aresta.identificador1)
+			if aresta.origem == identificador:
+				adj.append(aresta.destino)
+			elif aresta.destino == identificador:
+				adj.append(aresta.origem)
 		return adj
 
 	def insertNo(self, no):
@@ -52,35 +52,35 @@ class Grafo(object):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == Aresta:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 > aresta.identificador2:
-					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
-				elif aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem > aresta.destino:
+					aresta.origem, aresta.destino = aresta.destino, aresta.origem
+				elif aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
 			return Situacao(False, "1 ou 2 dos Nos n existem")
 		return Situacao(False, "Argumento n eh do tipo Aresta")
 
-	def atingivel(self, identificador1, identificador2):
-		dados = self.dfs(identificador1)
+	def atingivel(self, origem, destino):
+		dados = self.dfs(origem)
 
-		if dados['cores'][identificador2] == 'black':
+		if dados['cores'][destino] == 'black':
 			return True
 		
 		return False;
 
-	def caminho(self, identificador1, identificador2):
-		dados = self.bfs(identificador1)
-		if dados['cores'][identificador2] == 'black':
+	def caminho(self, origem, destino):
+		dados = self.bfs(origem)
+		if dados['cores'][destino] == 'black':
 			caminho = []
 		
-			no = dados['arvore'].getNo(identificador2)
+			no = dados['arvore'].getNo(destino)
 			while 1:
 				caminho.append(no.identificador)
-				if no.identificador == identificador1:
+				if no.identificador == origem:
 					break
 				no = dados['arvore'].getNo(no.pai)
 			caminho.reverse()
@@ -268,12 +268,12 @@ class Grafo_ArestaValorada(Grafo):
 		
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 > aresta.identificador2:
-					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
-				elif aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem > aresta.destino:
+					aresta.origem, aresta.destino = aresta.destino, aresta.origem
+				elif aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -296,12 +296,12 @@ class Grafo_Aresta_e_NoValorados(Grafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 > aresta.identificador2:
-					aresta.identificador1, aresta.identificador2 = aresta.identificador2, aresta.identificador1
-				elif aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem > aresta.destino:
+					aresta.origem, aresta.destino = aresta.destino, aresta.origem
+				elif aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -317,15 +317,15 @@ class DiGrafo(Grafo):
 	def getAdj(self, identificador):
 		adj = []
 		for aresta in self.arestas:
-			if aresta.identificador1 == identificador:
-				adj.append(aresta.identificador2)
+			if aresta.origem == identificador:
+				adj.append(aresta.destino)
 		return adj
 
-	def getAresta(self, identificador1, identificador2):
-		if identificador1 == identificador2:
+	def getAresta(self, origem, destino):
+		if origem == destino:
 			return Situacao(False, "Identificadores iguais do 2 nos")
 		for aresta in self.arestas:
-			if aresta.identificador1 == identificador1 and aresta.identificador2 == identificador2:
+			if aresta.origem == origem and aresta.destino == destino:
 				return True
 		return False
 
@@ -369,10 +369,10 @@ class DiGrafo_ArestaValorada(DiGrafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
@@ -394,10 +394,10 @@ class DiGrafo_Aresta_e_NoValorados(DiGrafo):
 
 	def insertAresta(self, aresta):
 		if type(aresta) == ArestaValorada:
-			if self.getNo(aresta.identificador1) and self.getNo(aresta.identificador2):
-				if aresta.identificador1 == aresta.identificador2:
+			if self.getNo(aresta.origem) and self.getNo(aresta.destino):
+				if aresta.origem == aresta.destino:
 					return Situacao(False, "Identificadores iguais dos 2 Nos")
-				if self.getAresta(aresta.identificador1, aresta.identificador2):
+				if self.getAresta(aresta.origem, aresta.destino):
 					return Situacao(False, "Aresta ja existe")
 				self.arestas.append(aresta)
 				return Situacao(True, "Aresta inserida com sucesso")
