@@ -32,6 +32,106 @@ class TestStringMethods(unittest.TestCase):
 
 		self.assertEqual(self.grafo.atingivel(1, 7), False)
 
+	def test_caminho(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.assertEqual(len(self.grafo.nos), 7)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 2))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(3, 4))
+		self.grafo.insertAresta(Aresta(4, 6))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.caminho(1, 6), [1, 5, 4, 6])
+
+		self.assertEqual(self.grafo.caminho(1, 3), [1, 2, 3])
+
+	def test_conexo(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.assertEqual(len(self.grafo.nos), 6)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 2))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(3, 4))
+		self.grafo.insertAresta(Aresta(4, 6))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.conexo(), True)
+
+		self.grafo.insertNo(No(7))
+		self.assertEqual(len(self.grafo.nos), 7)
+
+		self.assertEqual(self.grafo.conexo(), False)
+
+	def test_ciclico(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.grafo.insertNo(No(8))
+		self.grafo.insertNo(No(9))
+		self.grafo.insertNo(No(10))
+		self.assertEqual(len(self.grafo.nos), 10)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(6, 7))
+		self.grafo.insertAresta(Aresta(8, 9))
+		self.grafo.insertAresta(Aresta(9, 10))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.ciclico(), False)
+
+		self.grafo.insertAresta(Aresta(10, 8))
+		self.assertEqual(len(self.grafo.arestas), 8)
+		self.assertEqual(self.grafo.ciclico(), True)
+
+	def test_num_componentes(self):
+		self.grafo.insertNo(No(1))
+		self.grafo.insertNo(No(2))
+		self.grafo.insertNo(No(3))
+		self.grafo.insertNo(No(4))
+		self.grafo.insertNo(No(5))
+		self.grafo.insertNo(No(6))
+		self.grafo.insertNo(No(7))
+		self.grafo.insertNo(No(8))
+		self.grafo.insertNo(No(9))
+		self.grafo.insertNo(No(10))
+		self.assertEqual(len(self.grafo.nos), 10)
+
+		self.grafo.insertAresta(Aresta(1, 2))
+		self.grafo.insertAresta(Aresta(1, 5))
+		self.grafo.insertAresta(Aresta(5, 4))
+		self.grafo.insertAresta(Aresta(2, 3))
+		self.grafo.insertAresta(Aresta(6, 7))
+		self.grafo.insertAresta(Aresta(8, 9))
+		self.grafo.insertAresta(Aresta(9, 10))
+		self.assertEqual(len(self.grafo.arestas), 7)
+
+		self.assertEqual(self.grafo.num_componentes(), 3)
+
 	def test_ord_topol(self):
 		self.grafo.insertNo(No(1))
 		self.grafo.insertNo(No(2))
